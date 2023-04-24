@@ -9,7 +9,7 @@ const GameBoard = () => {
 
     const renderTheBoard = () => {
 
-        if (state.boardSize > 0) {
+        if (state.boardSize >= 3) {
             for (let i = 0; i < state.boardSize; i++) {
                 squares[i] = new Array(state.boardSize);
 

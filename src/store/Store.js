@@ -11,7 +11,7 @@ const initialState = {
     activePlayer: "",
     winner: "",
     isDraw: false,
-    turns: 1,
+    turns: 0,
 }
 
 function storeReducer(state, action) {

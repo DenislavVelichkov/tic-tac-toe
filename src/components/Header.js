@@ -26,7 +26,7 @@ const Header = () => {
     return (
         <HeaderContainer>
             <label>
-                Pick grid size
+                Pick grid size (Will be available in the next version!)
                 <input ref={boardSizeRef} type="number" disabled={true}/>
             </label>
             <label>

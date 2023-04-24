@@ -48,10 +48,11 @@ const Square = ({coordinates}) => {
         for (let row = 0; row < board.length; row++) {
             let symbolCounter = 0;
             for (let col = 0; col < board[row].length; col++) {
-                if (board[row][col] === symbol) symbolCounter++;
+                if (board[row][col] === symbol){
+                    symbolCounter++;
+                }
                 if (symbolCounter === board.length) {
-                    context.dispatch(declareWinner(symbol))
-                    return;
+                    return context.dispatch(declareWinner(symbol));
                 }
             }
         }
@@ -61,31 +62,29 @@ const Square = ({coordinates}) => {
         for (let col = 0; col < board.length; col++) {
             let symbolCounter = 0;
             for (let row = 0; row < board[col].length; row++) {
-                if (board[row][col] === symbol) symbolCounter++;
+                if (board[row][col] === symbol) {
+                    symbolCounter++;
+                }
                 if (symbolCounter === board.length) {
-                    context.dispatch(declareWinner(symbol))
-                    return;
+                    return context.dispatch(declareWinner(symbol));
                 }
             }
         }
     }
 
     const checkDiagonals = (board, symbol) => {
-        for (let row = 0; row < board.length; row++) {
-            let symbolCounter = 0;
-            if (board[row][row] === symbol) symbolCounter++;
-            if (symbolCounter === board.length) {
-                context.dispatch(declareWinner(symbol))
-                return;
-            }
-        }
+        let symbolCounterDiagA = 0;
+        let symbolCounterDiagB = 0;
 
-        for (let row = board.length - 1; row >= 0; row--) {
-            let symbolCounter = 0;
-            if (board[row][row] === symbol) symbolCounter++;
-            if (symbolCounter === board.length) {
-                context.dispatch(declareWinner(symbol))
-                return;
+        for (let row = 0; row < board.length; row++) {
+            if (board[row][row] === symbol) symbolCounterDiagA++;
+            if (symbolCounterDiagA === board.length) {
+                return context.dispatch(declareWinner(symbol));
+            }
+
+            if (board[row][board.length - row - 1] === symbol) symbolCounterDiagB++;
+            if (symbolCounterDiagB === board.length) {
+                return context.dispatch(declareWinner(symbol));
             }
         }
     }
